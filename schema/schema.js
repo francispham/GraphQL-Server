@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+// const _ = require('lodash');
 const axios = require('axios');
 const {
   GraphQLObjectType,
@@ -8,14 +9,17 @@ const {
   GraphQLList,
   GraphQLNonNull
 } = graphql;
+/*
+Hardcode Users (static list of users) require lodash:
+(this hardcode data will be replace by db.json file)
 
-//Hardcode Users require lodash
-// const users = [
-//   { id: '23', firstName: 'Bill', age: 20 },
-//   { id: '47', firstName: 'Samantha', age: 21 }
-// ];
+ const users = [
+   { id: '23', firstName: 'Bill', age: 20 },
+   { id: '47', firstName: 'Samantha', age: 21 }
+ ];
+*/
 
-// Types of Data
+// Types of Data (Needed for Nested Queries)
 const CompanyType = new GraphQLObjectType({
   name: 'Company',
   fields: () => ({
@@ -49,6 +53,7 @@ const UserType = new GraphQLObjectType({
   })
 });
 
+
 // For GraphQL to find the first Query (Root Query)
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -73,6 +78,7 @@ const RootQuery = new GraphQLObjectType({
     }
   }
 })
+
 
 // Mutation
 const mutation = new GraphQLObjectType({
@@ -115,6 +121,7 @@ const mutation = new GraphQLObjectType({
     }
   }
 })
+//Note: Using a 'put' request instead of a 'patch' request will replace the whole record! 
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
