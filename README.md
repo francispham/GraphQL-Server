@@ -19,3 +19,9 @@ request method used to utilize that collection of records.
   d. Resolve Functions (using with axios)
 4. Fetching Data with Queries
   a. Nested Queries
+  
+#  Stack:
+```
+React.js, GraphQL, Express.js, Axios, MongoDB Server
+(MLab.com)
+```
